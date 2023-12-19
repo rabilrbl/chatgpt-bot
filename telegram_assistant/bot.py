@@ -5,7 +5,7 @@ from telegram_assistant.handlers import start, help_command, handle_message, new
 
 def start_bot():
     loop = asyncio.get_event_loop()
-    asyncio.run_coroutine_threadsafe(init_chatgpt(), loop)
+    loop.run_until_complete(init_chatgpt())
     app = Application.builder().token(os.getenv("BOT_TOKEN")).build()
     
     # Commands
