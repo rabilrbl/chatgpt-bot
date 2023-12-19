@@ -6,7 +6,7 @@ from telegram.ext import (
 )
 from telegram.error import NetworkError, BadRequest
 from telegram.constants import ChatAction, ParseMode
-from telegram_assistant.chatgpt import chatgpt
+from telegram_assistant.chatgpt import chatgpt, generate_response
 
 chats: dict[str, ty.Any] = {}
 CHATGPT = None
@@ -19,17 +19,7 @@ async def new_chat(chat_id: int) -> None:
     chats[chat_id] = {
         "conversation": CHATGPT.create_new_conversation(),
     }
-    
-async def generate_response(conversation, prompt: str):
-    pending_response = ""
-    # yield streaming response
-    async for message in conversation.chat(prompt):
-        pending_response += message['content']
-        if pending_response and len(pending_response) > 50:
-            yield pending_response
-            pending_response = ""
-    if pending_response:
-        yield pending_response
+
 
 async def start(update: Update, _: ContextTypes.DEFAULT_TYPE) -> None:
     """Send a message when the command /start is issued."""
@@ -77,7 +67,7 @@ async def handle_message(update: Update, _: ContextTypes.DEFAULT_TYPE) -> None:
         except (NetworkError, BadRequest) as e:
             print(e)
             pass
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(0.1)
             
 
 
