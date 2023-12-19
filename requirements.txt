@@ -2,7 +2,7 @@ anyio==4.2.0
 certifi==2023.11.17
 cffi==1.16.0
 cryptography==41.0.7
-curl-cffi==0.5.9
+curl-cffi==0.5.10
 exceptiongroup==1.2.0
 h11==0.14.0
 httpcore==1.0.2
