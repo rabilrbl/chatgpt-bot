@@ -8,7 +8,7 @@ from telegram.error import NetworkError, BadRequest
 from telegram.constants import ChatAction, ParseMode
 from telegram_assistant.chatgpt import chatgpt
 
-chats: dict[str, dict[str, ty.Any]] = {}
+chats: dict[str, ty.Any] = {}
 CHATGPT = None
 
 async def init_chatgpt() -> None:
