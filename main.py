@@ -1,3 +1,4 @@
+import asyncio
 from telegram_assistant.bot import start_bot
 
 if __name__ == '__main__':
