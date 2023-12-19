@@ -63,7 +63,7 @@ async def handle_message(update: Update, _: ContextTypes.DEFAULT_TYPE) -> None:
             
             # Telegram message length limit is 4096 characters
             if len(formatted_message) > 4096:
-                formatted_message = formatted_message[len(init_msg.text):]
+                formatted_message = formatted_message[4096:]
                 init_msg = await init_msg.reply_text(
                     text=formatted_message,
                     parse_mode=ParseMode.HTML,
