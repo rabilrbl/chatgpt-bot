@@ -1,6 +1,6 @@
 FROM python:3.11-alpine as base
 
-RUN apk add gcc cmake git libc6-dev
+RUN apk add gcc cmake git libc-dev
 
 RUN pip install --upgrade pip
 
