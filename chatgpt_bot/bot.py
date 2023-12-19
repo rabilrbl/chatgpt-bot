@@ -1,7 +1,7 @@
 import os, asyncio
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters
-from telegram_assistant.handlers import start, help_command, handle_message, newchat_command, init_chatgpt
+from chatgpt_bot.handlers import start, help_command, handle_message, newchat_command, init_chatgpt
 
 def start_bot():
     loop = asyncio.get_event_loop()

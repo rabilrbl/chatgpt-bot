@@ -6,8 +6,8 @@ from telegram.ext import (
 )
 from telegram.error import NetworkError, BadRequest
 from telegram.constants import ChatAction, ParseMode
-from telegram_assistant.chatgpt import chatgpt, generate_response
-from telegram_assistant.html_format import format_message
+from chatgpt_bot.chatgpt import chatgpt, generate_response
+from chatgpt_bot.html_format import format_message
 
 chats: dict[str, ty.Any] = {}
 CHATGPT = None
