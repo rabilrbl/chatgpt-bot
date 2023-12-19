@@ -7,6 +7,7 @@ from telegram.ext import (
 from telegram.error import NetworkError, BadRequest
 from telegram.constants import ChatAction, ParseMode
 from telegram_assistant.chatgpt import chatgpt, generate_response
+from telegram_assistant.html_format import format_message
 
 chats: dict[str, ty.Any] = {}
 CHATGPT = None
@@ -54,16 +55,31 @@ async def handle_message(update: Update, _: ContextTypes.DEFAULT_TYPE) -> None:
         await new_chat(update.message.chat.id)
     conversation = chats[update.message.chat_id]["conversation"]
     prompt = update.message.text
+    full_response = ""
     async for message in generate_response(conversation,prompt):
         try:
-            if init_msg.text != "Generating response...":
-                init_msg = await init_msg.edit_text(
-                    text=init_msg.text + message,   
+            full_response += message
+            formatted_message = format_message(full_response)
+            
+            # Telegram message length limit is 4096 characters
+            if len(formatted_message) > 4096:
+                formatted_message = formatted_message[len(init_msg.text):]
+                init_msg = await init_msg.reply_text(
+                    text=formatted_message,
+                    parse_mode=ParseMode.HTML,
+                    reply_to_message_id=init_msg.message_id,
                 )
             else:
-                init_msg = await init_msg.edit_text(
-                    text=message,
-                )
+                if init_msg.text != "Generating response...":
+                    init_msg = await init_msg.edit_text(
+                        text=formatted_message,
+                        parse_mode=ParseMode.HTML,
+                    )
+                else:
+                    init_msg = await init_msg.edit_text(
+                        text=formatted_message,
+                        parse_mode=ParseMode.HTML,
+                    )
         except (NetworkError, BadRequest) as e:
             print(e)
             pass
