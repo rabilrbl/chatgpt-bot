@@ -1,6 +1,6 @@
 FROM python:3.11-alpine as base
 
-RUN apk add gcc cmake git libc-dev curl libcurl curl-dev
+RUN apk add gcc cmake git libc-dev curl libcurl curl-dev openssl-dev
 
 RUN pip install --upgrade pip
 
