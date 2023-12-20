@@ -34,7 +34,7 @@ def apply_italic(text: str) -> str:
 
 def apply_code(text: str) -> str:
     """Replace markdown code ``` with HTML code tags."""
-    pattern = r"```([^\n]*)\n((?:.|[\n])*?)\n```"
+    pattern = r"```([\w]*?)\n([\s\S]*?)```"
     replaced_text = re.sub(pattern, r"<pre lang='\1'>\2</pre>", text, flags=re.DOTALL)
     return replaced_text
 
