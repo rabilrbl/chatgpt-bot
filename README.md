@@ -6,7 +6,7 @@
 
   *This is a Python Telegram bot that uses ChatGPT to generate creative text formats based on user input. It is designed to be a fun and interactive way to explore the possibilities of large language models.*
 
-  [Screencast from 20-12-23 11:18:08 AM +0530.webm](https://github.com/rabilrbl/chatgpt-bot/assets/63334479/4b1e4de8-425a-4989-b14a-0a567f924a31)
+  [ChatGPT Bot Preview.webm](https://github.com/rabilrbl/chatgpt-bot/assets/63334479/4b1e4de8-425a-4989-b14a-0a567f924a31)
 
 </div>
 
@@ -87,6 +87,12 @@ docker run --env-file .env chatgpt-bot
 ### Contributing
 
 We welcome contributions to this project. Please feel free to fork the repository and submit pull requests.
+
+
+### Acknowledgements
+
+- [Zai-Kun/reverse-engineered-chatgpt](https://github.com/Zai-Kun/reverse-engineered-chatgpt)
+- [Python Telegram Bot](https://github.com/python-telegram-bot/python-telegram-bot)
 
 ### Disclaimer
 
