@@ -58,7 +58,7 @@ docker run --env-file .env chatgpt-bot
     * `pip install -r requirements.txt` (if not using pipenv)
 3. Create a `.env` file and add the following environment variables:
     * `BOT_TOKEN`: Your Telegram Bot API token. You can get one by talking to [@BotFather](https://t.me/BotFather).
-    * `GOOGLE_API_KEY`: Your Google Bard API key. You can get one from [Google AI Studio](https://makersuite.google.com/).
+    * `SESSION_KEY`: `__Secure-next-auth.session-token` cookie value. You can get one from [ChatGPT](https://chat.openai.com/). After logging in, head to inspect tab > Applications > Cookie > select chat.openai.com.
 4. Run the bot:
     * `python main.py` (if not using pipenv)
     * `pipenv run python main.py` (if using pipenv)
