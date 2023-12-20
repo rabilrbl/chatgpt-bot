@@ -68,17 +68,20 @@ async def handle_message(update: Update, _: ContextTypes.DEFAULT_TYPE) -> None:
                     text=formatted_message,
                     parse_mode=ParseMode.HTML,
                     reply_to_message_id=init_msg.message_id,
+                    disable_web_page_preview=True,
                 )
             else:
                 if init_msg.text != "Generating response...":
                     init_msg = await init_msg.edit_text(
                         text=formatted_message,
                         parse_mode=ParseMode.HTML,
+                        disable_web_page_preview=True,
                     )
                 else:
                     init_msg = await init_msg.edit_text(
                         text=formatted_message,
                         parse_mode=ParseMode.HTML,
+                        disable_web_page_preview=True,
                     )
         except (NetworkError, BadRequest) as e:
             print(e)
