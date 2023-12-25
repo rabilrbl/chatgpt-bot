@@ -18,7 +18,8 @@
 * Easy to use with simple commands:
     * `/start`: Greet the bot and get started.
     * `/help`: Get information about the bot's capabilities.
-    * Send any text message to trigger the generation process.
+* Send any text message to trigger the generation process.
+* Restrict the bot to specific users or groups.
 
 ### Requirements
 
@@ -61,6 +62,7 @@ docker run --env-file .env chatgpt-bot
 3. Create a `.env` file and add the following environment variables:
     * `BOT_TOKEN`: Your Telegram Bot API token. You can get one by talking to [@BotFather](https://t.me/BotFather).
     * `SESSION_KEY`: `__Secure-next-auth.session-token` cookie value. You can get one from [ChatGPT](https://chat.openai.com/). After logging in, head to inspect tab > Applications > Cookie > select chat.openai.com.
+    * `AUTHORIZED_USERS`: A comma-separated list of Telegram usernames or user IDs that are authorized to use the bot. You can get your user ID by talking to [@userinfobot](https://t.me/userinfobot).
 4. Run the bot:
     * `python main.py` (if not using pipenv)
     * `pipenv run python main.py` (if using pipenv)
