@@ -9,17 +9,14 @@ from telegram.constants import ChatAction, ParseMode
 from chatgpt_bot.chatgpt import chatgpt, generate_response
 from chatgpt_bot.html_format import format_message
 
-chats: dict[str, ty.Any] = {}
 CHATGPT = None
 
 async def init_chatgpt() -> None:
     global CHATGPT
     CHATGPT = await chatgpt()
 
-async def new_chat(chat_id: int) -> None:
-    chats[chat_id] = {
-        "conversation": CHATGPT.create_new_conversation(),
-    }
+def new_chat(context: ContextTypes.DEFAULT_TYPE) -> None:
+    context.chat_data["conversation"] = CHATGPT.create_new_conversation()
 
 
 async def start(update: Update, _: ContextTypes.DEFAULT_TYPE) -> None:
@@ -46,14 +43,14 @@ Send a message to the bot to generate a response.
     await update.message.reply_text(help_text)
     
     
-async def handle_message(update: Update, _: ContextTypes.DEFAULT_TYPE) -> None:
+async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     init_msg = await update.message.reply_text(
         text="Generating response...",
         reply_to_message_id=update.message.message_id,
     )
-    if update.message.chat.id not in chats:
-        await new_chat(update.message.chat.id)
-    conversation = chats[update.message.chat_id]["conversation"]
+    if context.chat_data.get("conversation") is None:
+        new_chat(context)
+    conversation = context.chat_data.get("conversation")
     prompt = update.message.text
     full_response = ""
     async for message in generate_response(conversation,prompt):
@@ -90,11 +87,11 @@ async def handle_message(update: Update, _: ContextTypes.DEFAULT_TYPE) -> None:
             
 
 
-async def newchat_command(update: Update, _: ContextTypes.DEFAULT_TYPE) -> None:
+async def newchat_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Start a new chat session."""
     init_msg = await update.message.reply_text(
         text="Starting new chat session...",
         reply_to_message_id=update.message.message_id,
     )
-    await new_chat(update.message.chat.id)
+    new_chat(context)
     await init_msg.edit_text("New chat session started.")
