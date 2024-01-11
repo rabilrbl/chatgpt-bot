@@ -18,5 +18,10 @@ image = "ghcr.io/rabilrbl/chatgpt-bot:latest"
     soft_limit = 20
     type = "connections"
 
+# Dummy port as services.ports is required for fly.toml
+[[services.ports]]
+handlers = ["http"]
+port = 80
+
 [deploy]
   strategy = "immediate"
