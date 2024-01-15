@@ -9,7 +9,7 @@ httpcore==1.0.2
 httpx==0.25.2
 idna==3.6
 pycparser==2.21
-pycryptodome==3.19.1
+pycryptodome==3.20.0
 python-dotenv==1.0.0
 python-telegram-bot==20.7
 git+https://github.com/Zai-Kun/reverse-engineered-chatgpt.git@ac2c3b7849f8620e4afe883f73339257e14e5694
