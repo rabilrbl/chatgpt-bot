@@ -11,7 +11,7 @@ idna==3.6
 pycparser==2.21
 pycryptodome==3.20.0
 python-dotenv==1.0.1
-python-telegram-bot==20.8
+python-telegram-bot==21.0.1
 git+https://github.com/Zai-Kun/reverse-engineered-chatgpt.git@ac2c3b7849f8620e4afe883f73339257e14e5694
 sniffio==1.3.1
 typing_extensions==4.11.0
