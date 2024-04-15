@@ -8,7 +8,7 @@ h11==0.14.0
 httpcore==1.0.5
 httpx==0.26.0
 idna==3.7
-pycparser==2.21
+pycparser==2.22
 pycryptodome==3.20.0
 python-dotenv==1.0.1
 python-telegram-bot==20.8
