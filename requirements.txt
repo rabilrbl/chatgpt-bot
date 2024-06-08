@@ -1,5 +1,5 @@
 anyio==4.4.0
-certifi==2024.2.2
+certifi==2024.6.2
 cffi==1.16.0
 cryptography==42.0.7
 curl-cffi==0.5.9
